@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    background: linear-gradient(#223,#222);
+    display: flex;
+    justify-content: center;
+    scrollbar-width: 0;
+    align-items: center;
+    overflow: hidden;
+}
+.contain{
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sav-cont{
+    display: none;
+}
+.sav-btn{
+    padding: .5rem;
+    border-radius: .6rem;
+    border: none;
+    margin: 2rem;
+    background-color: #223;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .5rem;
+    position: relative;
+}
+.sav-btn::after{
+    content: '';
+    position: absolute;
+    width: 107%;
+    height: 107%;
+    background: linear-gradient(to bottom right,rgb(72, 72, 247), purple);
+    border-radius: .6rem;
+    z-index: -1;
+}
+.sav-btn:hover{
+    z-index: 0;
+}
+.start{
+    position: relative;
+    text-align: center;
+    width: 25dvw;
+    margin: 2rem;
+    border: 1px solid red;
+    background: linear-gradient(#223,#222);
+    border: none;
+    border-radius: 2rem;
+    color: whitesmoke;
+    padding: 5rem;
+    animation-name: begin;
+    animation-delay: 0;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    /* display: none; */
+}
+.start::after,.start::before{
+    content: '';
+    position: absolute; 
+    height: 100%; 
+    width: 100%; 
+    background-image: conic-gradient(violet,orange,blue,green,red,violet);
+    top: 50%; 
+    left: 50%; 
+    translate: -50% -50%; 
+    z-index: -1; 
+    padding: 3px; 
+    border-radius: 2rem;
+}
+.start::before{
+    filter: blur(20px);
+    opacity: 0.7;
+}
+@keyframes begin {
+    from{
+        width: 60dvw;
+    }
+}
+.start h1{
+    animation-name: fade;
+    animation-duration: 3s;
+    animation-timing-function: ease-in;
+    animation-direction: alternate;
+    animation-delay: 2.5s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+@keyframes fade {
+    to{
+        opacity: 1;
+    }
+}
+#message{
+    display: none;
+    width: auto;
+    height: auto;
+    padding: .7rem;
+    color: aquamarine;
+    border-radius: 1rem;
+    background: linear-gradient(#222,#223);
+    border: 1px solid aqua;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+}
+.animate-it{
+    animation-name: come-in;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+@keyframes come-in{
+    0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.start button{
+    background-color: aquamarine;
+    color: blue;
+    margin-top: 2rem;
+    border-radius: 2rem;
+    border: none;
+    padding: .4rem;
+    transition: all 1s;
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-direction: alternate;
+    animation-delay: 2.5s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.start button:hover{
+    background-color: blue;
+    color: aquamarine;
+    padding: .5rem;
+}
+.to-do-list{
+    width: 80dvw;
+    border: none;
+    min-height: 50dvh;
+    height: auto;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem;
+    transition: all 2s;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+}
+.animate{
+    animation-name: expand;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes expand {
+    from{
+        width: 0;
+    }
+}
+.inp-fld{
+    width: 60dvw;
+    background-color: #223;
+    border-radius: .5rem;
+    padding: .5rem;
+    display: grid;
+    grid-template-columns: .5fr 8fr .5fr;
+    gap: .1rem;
+}
+.inp-fld i{
+    color: gray;
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.inp-fld button{
+    border-radius: 50%;
+    border: none;
+    background-color: gray;
+    transition: all 1s;
+    cursor: pointer;
+}
+.inp-fld button:hover{
+    background-color: aquamarine;
+}
+.inp-fld input{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: whitesmoke;
+    width: auto;
+}
+.inp-fld input::placeholder{
+    font-weight: 600;
+}
+.lister{
+    min-width: 50dvw;
+    min-height: 50dvh;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .01rem;
+}
+.elem{
+    max-width: 45dvw;
+    display: flex;
+    gap: .5rem;
+    padding: 1rem;
+}
+.lister button{
+    padding: .2rem;
+    width: 2rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 1s;
+}
+.lister .tik{
+    color: green;
+    height: fit-content;
+    width: fit-content;
+    padding: .45rem;
+    margin: auto;
+    background: lightgreen;
+}
+.lister .tik:hover{
+    color: lightgreen;
+    background: green;
+}
+.lister .wrong{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    color: red;
+    padding: .45rem;
+    background: orange;
+}
+.lister .wrong:hover{
+    color: orange;
+    background: red;
+}
+.lister span{
+    color: aliceblue;
+    font-weight: 550;
+    text-decoration: none;
+}
+.top{
+    color: aliceblue;
+    display: none;
+    padding: .6rem;
+    transition: all 2s;
+}
