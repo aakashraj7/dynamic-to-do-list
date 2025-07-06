@@ -8,6 +8,9 @@ function divIsEmpty(){
         emptyMessage.style.margin = "auto"
         emptyMessage.style.color = "whitesmoke"
         lister.appendChild(emptyMessage)
+    }else{
+        var inpBox = document.getElementById("inp-box")
+        inpBox.placeholder = "Your Next Plan. . ."
     }
     if(lister.querySelector(".elem") !== null && lister.querySelector(".empty-message") !== null){
         var emptyMessage = lister.querySelector(".empty-message")
