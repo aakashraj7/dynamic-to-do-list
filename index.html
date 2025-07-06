@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+    <link rel="icon" href="\Users\Akash raj\Downloads\to-do-list.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="message"></div>
+    <div class="contain">
+        <div class="start">
+            <h1>Dynamic To Do List</h1>
+            <button onclick="nextStep()">Get Started &#8594; </button>
+        </div>
+        <h1 class="top">Dynamic To-Do List</h1>
+        <div class="to-do-list">
+            <div class="inp-fld">
+                <i class="fa-solid fa-message"></i>
+                <input id="inp-box" type="text" placeholder="Your Plan Goes Here. . .">
+                <button onclick="addElem()">&#10004;</button>
+            </div>
+            <div id="list-content" class="lister">
+            </div>
+            <!-- The Content of the lister is like -->
+            <!-- <div class="elem">
+                    <button class="tik">&#10004;</button>
+                    <span>The Content Goes Here . . .</span>
+                    <button class="wrong">&#10006;</button>
+                </div> -->
+        </div>
+        <span class="sav-cont"><button onclick="saveTasks()" class="sav-btn">Save</button></span>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
