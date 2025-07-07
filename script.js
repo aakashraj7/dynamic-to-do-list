@@ -21,9 +21,14 @@ function divIsEmpty(){
 retrieveTasks()
 divIsEmpty()
 function saveTasks(){
-    let i = 0
-    while(localStorage.getItem(i.toString()) !== null){
-        localStorage.removeItem(i.toString())
+    var i = 0
+    while(localStorage.getItem(i.toString()) !== null || localStorage.getItem((i+100).toString) !== null){
+        if(localStorage.getItem(i.toString()) !== null){
+            localStorage.removeItem(i.toString())
+        }
+        if(localStorage.getItem((100+i).toString()) !== null){
+            localStorage.removeItem((100+i).toString())
+        }
         i++
     }
     var lister = document.getElementById("list-content")
@@ -34,11 +39,21 @@ function saveTasks(){
     var divs = lister.querySelectorAll(".elem")
     var collec = []
     divs.forEach(div => {
+        var pair = []
         let span = div.querySelector("span")
-        collec.push(span.textContent.trim())
+        pair.push(span.textContent.trim())
+        console.log(span.style.textDecoration)
+        console.log(span.style.textDecoration == "line-through")
+        if(span.style.textDecoration == "line-through"){
+            pair.push(true.toString())
+        }else{
+            pair.push("")
+        }
+        collec.push(pair)
     })
     for(let i=0;i<collec.length;i++){
-        localStorage.setItem(i.toString(),collec[i])
+        localStorage.setItem(i.toString(),collec[i][0])
+        localStorage.setItem((i+100).toString(),collec[i][1])
     }
     messageNow("Saved all Tasks !")
 }
@@ -53,7 +68,7 @@ function retrieveTasks(){
         var tikButton = document.createElement("button")
         tikButton.className = "tik"
         tikButton.onclick = stikeText
-        tikButton.innerHTML = "&#10004;"
+        // tikButton.innerHTML = "&#10004;"
         //Creating span tag
         var span = document.createElement("span")
         span.innerHTML = localStorage.getItem(i.toString())
@@ -62,6 +77,18 @@ function retrieveTasks(){
         wrongButton.onclick = deleteElem
         wrongButton.className = "wrong"
         wrongButton.innerHTML = "&#10006;"
+        //Restoring Status
+        if(Boolean(localStorage.getItem((100+i).toString())) == true){
+            span.style.textDecoration = "line-through"
+            tikButton.innerHTML = "&#9719;"
+            tikButton.style.color = "lightgreen"
+            tikButton.style.backgroundColor = "green"
+        }else{
+            span.textDecoration = "none"
+            tikButton.innerHTML = "&#10004;"
+            tikButton.style.backgroundColor = "lightgreen"
+            tikButton.style.color = "green"
+        }
         //Placing Elements
         elem.appendChild(tikButton)
         elem.appendChild(span)
@@ -137,7 +164,6 @@ function stikeText(event){
         var parentDiv = event.target.closest(".elem")
         var sTag = parentDiv.querySelector("span")
         var tikBut = parentDiv.querySelector(".tik")
-        console.log(getComputedStyle(sTag).textDecoration == "none")
         if(sTag.style.textDecoration == "line-through"){
             sTag.style.textDecoration = "none"
             tikBut.innerHTML = "&#10004;"
